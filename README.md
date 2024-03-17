@@ -12,3 +12,13 @@ Expected Date: 31-03-2024
 
 - Google Sheets will be used as database and the backend.
 - Frontend will be made using Next.js and Ant Design.
+
+## Tech Stack
+
+Frontend: Next.js, Ant Design
+Backend: Google Sheets
+
+## Useful Links
+
+1. [Figma UI Design](https://www.figma.com/file/utIFOzEpUX9gsSyRkgMOzS/Web-UI?type=design&node-id=0-1&mode=design&t=AX8OilHxFcZwwqnA-0)
+2. [Google Sheets API Documentation](https://developers.google.com/sheets/api)
