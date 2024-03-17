@@ -5,7 +5,7 @@ Expected Date: 31-03-2024
 ## Features
 
 - User will see a window with start attempt button.
-- When user starts, He will go through 10 questions.
+- When user starts, He will go through 10 questions. Each question will be shown one by one.
 - After answering all questions, user will see his score.
 
 ## Architecture
