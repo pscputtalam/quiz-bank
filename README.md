@@ -15,7 +15,7 @@ Expected Date: 31-03-2024
 
 ## Tech Stack
 
-Frontend: Next.js, Ant Design
+Frontend: Next.js, Ant Design  
 Backend: Google Sheets
 
 ## Useful Links
