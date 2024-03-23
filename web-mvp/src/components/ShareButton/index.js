@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import { Button, Icon, Modal } from 'semantic-ui-react';
+import React, { Fragment } from 'react'
+import { Button, Icon, Modal } from 'semantic-ui-react'
 
 const ShareButton = () => {
   const handleClick = () => {
@@ -10,8 +10,8 @@ const ShareButton = () => {
         url: 'https://safdarjamal.github.io/quiz-app/',
       })
       .then(() => console.log('Successfully shared'))
-      .catch(error => console.log(error.message));
-  };
+      .catch(error => console.log(error.message))
+  }
 
   return (
     <Fragment>
@@ -74,7 +74,7 @@ const ShareButton = () => {
         </Modal>
       )}
     </Fragment>
-  );
-};
+  )
+}
 
-export default ShareButton;
+export default ShareButton
