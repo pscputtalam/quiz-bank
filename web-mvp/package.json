@@ -1,9 +1,9 @@
 {
   "name": "quiz-app",
-  "version": "6.0.0",
+  "version": "0.1.0",
   "private": true,
   "author": {
-    "name": "Safdar Jamal",
+    "name": "PSC Quizbank",
     "url": "https://pscqb.netlify.app"
   },
   "homepage": "https://pscqb.netlify.app",
