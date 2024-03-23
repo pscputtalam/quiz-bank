@@ -8,31 +8,15 @@ const calculateGrade = score => {
   let grade = null;
   let remarks = null;
 
-  if (percentage >= 97) {
-    grade = 'A+';
-  } else if (percentage >= 93 && percentage <= 96) {
+  if (percentage >= 75) {
     grade = 'A';
-  } else if (percentage >= 90 && percentage <= 92) {
-    grade = 'A-';
-  } else if (percentage >= 87 && percentage <= 89) {
-    grade = 'B+';
-  } else if (percentage >= 83 && percentage <= 86) {
+  } else if (percentage >= 65 && percentage < 75) {
     grade = 'B';
-  } else if (percentage >= 80 && percentage <= 82) {
-    grade = 'B-';
-  } else if (percentage >= 77 && percentage <= 79) {
-    grade = 'C+';
-  } else if (percentage >= 73 && percentage <= 76) {
+  } else if (percentage >= 50 && percentage < 65) {
     grade = 'C';
-  } else if (percentage >= 70 && percentage <= 72) {
-    grade = 'C-';
-  } else if (percentage >= 67 && percentage <= 69) {
-    grade = 'D+';
-  } else if (percentage >= 63 && percentage <= 66) {
-    grade = 'D';
-  } else if (percentage >= 60 && percentage <= 62) {
-    grade = 'D-';
-  } else if (percentage < 60) {
+  } else if (percentage >= 35 && percentage < 50) {
+    grade = 'S';
+  } else if (percentage < 35) {
     grade = 'F';
   }
 
