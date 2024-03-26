@@ -1,0 +1,26 @@
+[
+    {
+        "name": "selectQuestions",
+        "private": false,
+        "run_as_system": true,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "getQuestion",
+        "private": false,
+        "run_as_system": true,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "markAnswers",
+        "private": false,
+        "run_as_system": true,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "generateQuiz",
+        "private": false,
+        "run_as_system": true,
+        "disable_arg_logs": true
+    }
+]
