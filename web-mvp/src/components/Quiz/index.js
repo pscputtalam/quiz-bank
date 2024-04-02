@@ -11,10 +11,14 @@ import {
   Menu,
   Header,
 } from 'semantic-ui-react'
-import he from 'he'
+
+// markdown and katex support
+import Markdown from 'react-markdown'
+import remarkMath from 'remark-math'
+import rehypeKatex from 'rehype-katex'
+import 'katex/dist/katex.min.css'
 
 import Countdown from '../Countdown'
-import { getLetter } from '../../utils'
 
 const Quiz = ({ data, countdownTime, endQuiz }) => {
   const [questionIndex, setQuestionIndex] = useState(0)
@@ -96,7 +100,12 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
                     <Item.Group divided>
                       <Item>
                         <Item.Content verticalAlign='middle' style={{ paddingBottom: '20px' }}>
-                          <b>{`Q. ${he.decode(data[questionIndex].question)}`}</b>
+                          <Markdown
+                            remarkPlugins={[remarkMath]}
+                            rehypePlugins={[rehypeKatex]}
+                        >
+                          {data[questionIndex].question}
+                        </Markdown>
                         </Item.Content>
                         {data[questionIndex].qImageUrl !== '' ? (
                           <Item.Image src={data[questionIndex].qImageUrl} size="small"  rounded/>
@@ -113,18 +122,20 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
                   <Divider />
                   <Menu vertical fluid size="massive">
                     {data[questionIndex].options.map((option, i) => {
-                      const letter = getLetter(i)
-                      const decodedOption = he.decode(option)
 
                       return (
                         <Menu.Item
-                          key={decodedOption}
-                          name={decodedOption}
-                          active={userSlectedAns === decodedOption}
+                          key={option}
+                          name={option}
+                          active={userSlectedAns === option}
                           onClick={handleItemClick}
                         >
-                          <b style={{ marginRight: '8px' }}>{letter}</b>
-                          {decodedOption}
+                          <Markdown
+                            remarkPlugins={[remarkMath]}
+                            rehypePlugins={[rehypeKatex]}
+                          >
+                            {`**${i + 1}**.${option}`}
+                          </Markdown>
                         </Menu.Item>
                       )
                     })}
