@@ -26,6 +26,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
   const [userSlectedAns, setUserSlectedAns] = useState(null)
   const [questionsAndAnswers, setQuestionsAndAnswers] = useState([])
   const [timeTaken, setTimeTaken] = useState(null)
+ //const [tempImageUrl] = useState('https://res.cloudinary.com/dsntr0b70/image/upload/v1710988583/physics/q15a1_f6ssij.jpg')
 
   useEffect(() => {
     if (questionIndex > 0) window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -96,12 +97,23 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
                 <br />
                 <Item.Meta>
                   <Message size="huge" floating>
-                    <Markdown
-                      remarkPlugins={[remarkMath]}
-                      rehypePlugins={[rehypeKatex]}
-                    >
-                      {data[questionIndex].question}
-                    </Markdown>
+                    <Item.Group divided>
+                      <Item>
+                        <Item.Content verticalAlign='middle' style={{ paddingBottom: '20px' }}>
+                          <Markdown
+                            remarkPlugins={[remarkMath]}
+                            rehypePlugins={[rehypeKatex]}
+                        >
+                          {data[questionIndex].question}
+                        </Markdown>
+                        </Item.Content>
+                        {data[questionIndex].qImageUrl !== '' ? (
+                          <Item.Image src={data[questionIndex].qImageUrl} size="small"  rounded/>
+                        // <Item.Image src={tempImageUrl} size="small"   rounded/>
+                        ) : null
+                        }
+                      </Item>
+                    </Item.Group>
                   </Message>
                   <br />
                   <Item.Description>
