@@ -20,6 +20,15 @@ import 'katex/dist/katex.min.css'
 
 import Countdown from '../Countdown'
 
+const urlPattern = new RegExp('^(https?:\\/\\/)?'+
+  '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+
+  '((\\d{1,3}\\.){3}\\d{1,3}))'+
+  '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+
+  '(\\?[;&a-z\\d%_.~+=-]*)?'+
+  '(\\#[-a-z\\d_]*)?$','i');
+
+const isImage = string => urlPattern.test(string);
+
 const Quiz = ({ data, countdownTime, endQuiz }) => {
   const [questionIndex, setQuestionIndex] = useState(0)
   const [correctAnswers, setCorrectAnswers] = useState(0)
@@ -122,7 +131,6 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
                   <Divider />
                   <Menu vertical fluid size="massive">
                     {data[questionIndex].options.map((option, i) => {
-
                       return (
                         <Menu.Item
                           key={option}
@@ -130,12 +138,28 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
                           active={userSlectedAns === option}
                           onClick={handleItemClick}
                         >
-                          <Markdown
-                            remarkPlugins={[remarkMath]}
-                            rehypePlugins={[rehypeKatex]}
-                          >
-                            {`**${i + 1}**.${option}`}
-                          </Markdown>
+                          { isImage(option) ? (
+                            <Item.Group divided>
+                              <Item>
+                                <div style={{ display: 'flex' }}>
+                                  <Item.Content>
+                                    <Markdown>
+                                      {`**${i + 1}**.`}
+                                    </Markdown>
+                                  </Item.Content>
+                                  <Item.Image src={option} size="small" rounded  />
+                                </div>
+                              </Item>
+                            </Item.Group>
+                             ) : (
+                              <Markdown
+                              remarkPlugins={[remarkMath]}
+                              rehypePlugins={[rehypeKatex]}
+                            >
+                              {`**${i + 1}**.${option}`}
+                            </Markdown>
+                            )
+                          }  
                         </Menu.Item>
                       )
                     })}
